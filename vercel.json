@@ -1,9 +1,9 @@
 {
   "routes": [
     {
-      "src": "/game",
-      "methods": ["POST", "GET"],
-      "dest": "/game.html"
+      "src": "/api/game",
+      "methods": ["POST"],
+      "dest": "/api/game.js"
     }
   ]
 }
