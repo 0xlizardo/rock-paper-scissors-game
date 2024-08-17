@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta property="fc:frame" content="vNext" />
+    <meta
+      property="fc:frame:image"
+      content="https://res.cloudinary.com/dxwhuaqga/image/upload/v1723914523/homepage_image_gx9ayx.jpg"
+    />
+    <!-- Same image for now -->
+    <meta
+      property="og:image"
+      content="https://res.cloudinary.com/dxwhuaqga/image/upload/v1723914523/homepage_image_gx9ayx.jpg"
+    />
+    <title>Rock Paper Scissors - Play</title>
+  </head>
+  <body>
+    <h1>Rock-Paper-Scissors</h1>
+    <p>Choose your move:</p>
+
+    <!-- Buttons for Rock, Paper, and Scissors -->
+    <button id="rock">Rock</button>
+    <button id="paper">Paper</button>
+    <button id="scissors">Scissors</button>
+
+    <!-- Result display -->
+    <div id="result"></div>
+
+    <!-- Streak and Leaderboard -->
+    <h2>Your Current Streak: <span id="streak">0</span></h2>
+    <h3>Leaderboard</h3>
+    <ul id="leaderboard"></ul>
+
+    <script>
+      // Variables for the images
+      const drawImage =
+        "https://res.cloudinary.com/dxwhuaqga/image/upload/v1723914524/draw-image_bec0ck.jpg";
+      const winImage =
+        "https://res.cloudinary.com/dxwhuaqga/image/upload/v1723914523/Win-image_vaogdr.jpg";
+      const loseImage =
+        "https://res.cloudinary.com/dxwhuaqga/image/upload/v1723914522/lose-image_wqmvry.jpg";
+
+      let streak = parseInt(localStorage.getItem("streak")) || 0;
+      const fcname = "User"; // Replace with the real fcname of the user
+
+      // Initialize leaderboard from localStorage or start fresh
+      let leaderboard = JSON.parse(localStorage.getItem("leaderboard")) || [];
+
+      // Function to update the leaderboard
+      function updateLeaderboard() {
+        const leaderboardElement = document.getElementById("leaderboard");
+        leaderboardElement.innerHTML = "";
+        leaderboard.forEach((player) => {
+          leaderboardElement.innerHTML += `<li>${player.fcname}: ${player.streak} wins</li>`;
+        });
+      }
+
+      // Display initial streak and leaderboard
+      document.getElementById("streak").textContent = streak;
+      updateLeaderboard();
+
+      // Function to determine the result
+      function playGame(userChoice) {
+        const choices = ["rock", "paper", "scissors"];
+        const computerChoice = choices[Math.floor(Math.random() * 3)];
+
+        let resultText = "";
+        let resultImage = "";
+
+        if (userChoice === computerChoice) {
+          resultText = "It's a draw!";
+          resultImage = drawImage;
+        } else if (
+          (userChoice === "rock" && computerChoice === "scissors") ||
+          (userChoice === "paper" && computerChoice === "rock") ||
+          (userChoice === "scissors" && computerChoice === "paper")
+        ) {
+          resultText = "You win!";
+          resultImage = winImage;
+          streak++; // Increment streak on win
+          document.getElementById("streak").textContent = streak;
+        } else {
+          resultText = "You lose!";
+          resultImage = loseImage;
+          streak = 0; // Reset streak for the current user
+          document.getElementById("streak").textContent = streak;
+        }
+
+        document.getElementById(
+          "result"
+        ).innerHTML = `<p>${resultText}</p><img src="${resultImage}" alt="${resultText}">`;
+
+        // Update leaderboard for the current user only
+        const playerIndex = leaderboard.findIndex(
+          (player) => player.fcname === fcname
+        );
+        if (playerIndex !== -1) {
+          leaderboard[playerIndex].streak = Math.max(
+            leaderboard[playerIndex].streak,
+            streak
+          ); // Update only if streak is higher
+        } else {
+          leaderboard.push({ fcname: fcname, streak: streak });
+        }
+
+        // Sort leaderboard by highest streak
+        leaderboard.sort((a, b) => b.streak - a.streak);
+        localStorage.setItem("streak", streak);
+        localStorage.setItem("leaderboard", JSON.stringify(leaderboard));
+
+        // Update leaderboard display
+        updateLeaderboard();
+      }
+
+      // Event listeners for buttons
+      document.getElementById("rock").addEventListener("click", function () {
+        playGame("rock");
+      });
+
+      document.getElementById("paper").addEventListener("click", function () {
+        playGame("paper");
+      });
+
+      document
+        .getElementById("scissors")
+        .addEventListener("click", function () {
+          playGame("scissors");
+        });
+    </script>
+  </body>
+</html>

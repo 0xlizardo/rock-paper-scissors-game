@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta property="fc:frame" content="vNext" />
+    <meta property="fc:frame:image" content="https://imgur.com/tk1uDvq" />
+    <meta property="og:image" content="https://imgur.com/tk1uDvq" />
+    <title>Rock Paper Scissors</title>
+  </head>
+  <body>
+    <h1>Rock-Paper-Scissors Game</h1>
+    <p>Try to improve your streak and climb the leaderboard!</p>
+
+    <!-- Start Game Button -->
+    <button id="start-game">Start Game</button>
+
+    <script>
+      // Redirect to the game page when the button is clicked
+      document
+        .getElementById("start-game")
+        .addEventListener("click", function () {
+          window.location.href = "game.html"; // Redirects to the game page
+        });
+    </script>
+  </body>
+</html>
