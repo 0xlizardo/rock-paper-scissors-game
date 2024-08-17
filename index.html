@@ -47,7 +47,7 @@
     });
 
     function sendMove(move) {
-      fetch("/game", {
+      fetch("/api/game", {
         method: "POST",
         headers: {
           "Content-Type": "application/json"
@@ -57,7 +57,7 @@
       .then(response => response.json())
       .then(data => {
         // Redirect to game result page with the move
-        window.location.href = "/game.html?move=" + move;
+        window.location.href = "/game.html?move=" + move + "&result=" + data.result + "&computerMove=" + data.computerMove;
       })
       .catch(error => {
         console.error("Error:", error);
