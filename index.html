@@ -1,33 +1,50 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta property="fc:frame" content="vNext" />
-    <meta
-      property="fc:frame:image"
-      content="https://res.cloudinary.com/dxwhuaqga/image/upload/v1723914523/homepage_image_gx9ayx.jpg"
-    />
-    <meta
-      property="og:image"
-      content="https://res.cloudinary.com/dxwhuaqga/image/upload/v1723914523/homepage_image_gx9ayx.jpg"
-    />
-    <title>Rock Paper Scissors</title>
-  </head>
-  <body>
-    <h1>Rock-Paper-Scissors Game</h1>
-    <p>Try to improve your streak and climb the leaderboard!</p>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta property="fc:frame" content="vNext">
+  <meta property="fc:frame:image" content="https://res.cloudinary.com/youraccount/image/upload/homepage.png">
+  <meta property="og:image" content="https://res.cloudinary.com/youraccount/image/upload/homepage.png">
+  
+  <!-- Meta tags for buttons -->
+  <meta property="fc:frame:button:1" content="Rock">
+  <meta property="fc:frame:button:1:action" content="post">
+  
+  <meta property="fc:frame:button:2" content="Paper">
+  <meta property="fc:frame:button:2:action" content="post">
+  
+  <meta property="fc:frame:button:3" content="Scissors">
+  <meta property="fc:frame:button:3:action" content="post">
+  
+  <title>Rock Paper Scissors Game</title>
+</head>
+<body>
+  <h1>Rock Paper Scissors</h1>
+  <p>Choose your move:</p>
 
-    <!-- Start Game Button -->
-    <button id="start-game">Start Game</button>
+  <!-- Buttons for Rock, Paper, and Scissors -->
+  <button id="rock">Rock</button>
+  <button id="paper">Paper</button>
+  <button id="scissors">Scissors</button>
 
-    <script>
-      // Redirect to the game page when the button is clicked
-      document
-        .getElementById("start-game")
-        .addEventListener("click", function () {
-          window.location.href = "game.html"; // Redirects to the game page
-        });
-    </script>
-  </body>
+  <h2>Your Current Streak: <span id="streak">0</span></h2>
+  <h3>Leaderboard</h3>
+  <ul id="leaderboard"></ul>
+
+  <script>
+    // JavaScript to handle button clicks
+    document.getElementById('rock').addEventListener('click', function() {
+      window.location.href = "/game.html?move=rock";
+    });
+
+    document.getElementById('paper').addEventListener('click', function() {
+      window.location.href = "/game.html?move=paper";
+    });
+
+    document.getElementById('scissors').addEventListener('click', function() {
+      window.location.href = "/game.html?move=scissors";
+    });
+  </script>
+</body>
 </html>
