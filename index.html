@@ -4,9 +4,9 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta property="fc:frame" content="vNext">
-  <meta property="fc:frame:image" content="https://res.cloudinary.com/dxwhuaqga/image/upload/v1723914523/homepage_image_gx9ayx.jpg">
-  <meta property="og:image" content="https://res.cloudinary.com/dxwhuaqga/image/upload/v1723914523/homepage_image_gx9ayx.jpg">
-  
+  <meta property="fc:frame:image" content="https://res.cloudinary.com/youraccount/image/upload/homepage.png">
+  <meta property="og:image" content="https://res.cloudinary.com/youraccount/image/upload/homepage.png">
+
   <!-- Meta tags for buttons -->
   <meta property="fc:frame:button:1" content="Rock">
   <meta property="fc:frame:button:1:action" content="post">
@@ -16,7 +16,7 @@
   
   <meta property="fc:frame:button:3" content="Scissors">
   <meta property="fc:frame:button:3:action" content="post">
-  
+
   <title>Rock Paper Scissors Game</title>
 </head>
 <body>
@@ -35,16 +35,34 @@
   <script>
     // JavaScript to handle button clicks
     document.getElementById('rock').addEventListener('click', function() {
-      window.location.href = "/game.html?move=rock";
+      sendMove("rock");
     });
 
     document.getElementById('paper').addEventListener('click', function() {
-      window.location.href = "/game.html?move=paper";
+      sendMove("paper");
     });
 
     document.getElementById('scissors').addEventListener('click', function() {
-      window.location.href = "/game.html?move=scissors";
+      sendMove("scissors");
     });
+
+    function sendMove(move) {
+      fetch("/game", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({ move: move })
+      })
+      .then(response => response.json())
+      .then(data => {
+        // Redirect to game result page with the move
+        window.location.href = "/game.html?move=" + move;
+      })
+      .catch(error => {
+        console.error("Error:", error);
+      });
+    }
   </script>
 </body>
 </html>
