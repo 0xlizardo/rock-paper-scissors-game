@@ -1,33 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta property="fc:frame" content="vNext" />
-    <meta
-      property="fc:frame:image"
-      content="https://res.cloudinary.com/dxwhuaqga/image/upload/v1723914523/homepage_image_gx9ayx.jpg"
-    />
-    <meta
-      property="og:image"
-      content="https://res.cloudinary.com/dxwhuaqga/image/upload/v1723914523/homepage_image_gx9ayx.jpg"
-    />
-    <title>Rock Paper Scissors</title>
-  </head>
-  <body>
-    <h1>Rock-Paper-Scissors Game</h1>
-    <p>Try to improve your streak and climb the leaderboard!</p>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <!-- Farcaster Frame Version -->
+  <meta property="fc:frame" content="vNext">
 
-    <!-- Start Game Button -->
-    <button id="start-game">Start Game</button>
+  <!-- Image for the frame -->
+  <meta property="fc:frame:image" content="https://res.cloudinary.com/dxwhuaqga/image/upload/v1723914523/homepage_image_gx9ayx.jpg">
+  <meta property="og:image" content="https://res.cloudinary.com/dxwhuaqga/image/upload/v1723914523/homepage_image_gx9ayx.jpg">
 
-    <script>
-      // Redirect to the game page when the button is clicked
-      document
-        .getElementById("start-game")
-        .addEventListener("click", function () {
-          window.location.href = "game.html"; // Redirects to the game page
-        });
-    </script>
-  </body>
+  <!-- Meta tags for buttons -->
+  <meta property="fc:frame:button:1" content="Rock">
+  <meta property="fc:frame:button:1:action" content="post">
+  <meta property="fc:frame:button:2" content="Paper">
+  <meta property="fc:frame:button:2:action" content="post">
+  <meta property="fc:frame:button:3" content="Scissors">
+  <meta property="fc:frame:button:3:action" content="post">
+
+  <meta property="fc:frame:post_url" content="https://rock-paper-scissors-game-six-gilt.vercel.app/api/game">
+
+  <title>Rock Paper Scissors Game</title>
+</head>
+<body>
+  <h1>Rock Paper Scissors</h1>
+  <p>Choose your move by clicking one of the buttons:</p>
+
+  <!-- Placeholder for buttons; buttons are rendered by Farcaster client based on meta tags -->
+  <div id="game"></div>
+</body>
 </html>
