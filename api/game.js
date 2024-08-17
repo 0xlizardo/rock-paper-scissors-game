@@ -6,7 +6,7 @@ export default function handler(req, res) {
     const moves = ['rock', 'paper', 'scissors'];
     const computerMove = moves[Math.floor(Math.random() * moves.length)];
 
-    // Calculate the result
+    // Calculate the result of the game
     let result = '';
     if (move === computerMove) {
       result = 'draw';
