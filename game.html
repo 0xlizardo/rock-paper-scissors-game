@@ -6,8 +6,8 @@
   <meta property="fc:frame" content="vNext">
   
   <!-- Result Image Meta (default to draw for now) -->
-  <meta property="fc:frame:image" content="https://res.cloudinary.com/dxwhuaqga/image/upload/v1723914523/homepage_image_gx9ayx.jpg">
-  <meta property="og:image" content="https://res.cloudinary.com/dxwhuaqga/image/upload/v1723914523/homepage_image_gx9ayx.jpg">
+  <meta property="fc:frame:image" content="https://res.cloudinary.com/youraccount/image/upload/draw.png">
+  <meta property="og:image" content="https://res.cloudinary.com/youraccount/image/upload/draw.png">
   
   <title>Rock Paper Scissors - Result</title>
 </head>
@@ -36,7 +36,7 @@
     // Determine result
     if (playerMove === computerMove) {
       result = 'draw';
-      document.getElementById('result-image').src = "https://res.cloudinary.com/dxwhuaqga/image/upload/v1723914524/draw-image_bec0ck.jpg";
+      document.getElementById('result-image').src = "https://res.cloudinary.com/youraccount/image/upload/draw.png";
     } else if (
       (playerMove === 'rock' && computerMove === 'scissors') ||
       (playerMove === 'paper' && computerMove === 'rock') ||
@@ -45,12 +45,12 @@
       result = 'win';
       streak++;
       localStorage.setItem('streak', streak);
-      document.getElementById('result-image').src = "https://res.cloudinary.com/dxwhuaqga/image/upload/v1723914523/Win-image_vaogdr.jpg";
+      document.getElementById('result-image').src = "https://res.cloudinary.com/youraccount/image/upload/win.png";
     } else {
       result = 'lose';
       streak = 0;
       localStorage.setItem('streak', streak);
-      document.getElementById('result-image').src = "https://res.cloudinary.com/dxwhuaqga/image/upload/v1723914522/lose-image_wqmvry.jpg";
+      document.getElementById('result-image').src = "https://res.cloudinary.com/youraccount/image/upload/lose.png";
     }
 
     // Display streak
