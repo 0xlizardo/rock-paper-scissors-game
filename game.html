@@ -14,7 +14,7 @@
 <body>
   <h1>Rock Paper Scissors Result</h1>
   <div id="result">
-    <img src="https://res.cloudinary.com/youraccount/image/upload/draw.png" alt="Result Image" id="result-image">
+    <img src="https://res.cloudinary.com/dxwhuaqga/image/upload/v1723914524/draw-image_bec0ck.jpg" alt="Result Image" id="result-image">
   </div>
   
   <h2>Your Current Streak: <span id="streak">0</span></h2>
@@ -22,39 +22,27 @@
   <ul id="leaderboard"></ul>
 
   <script>
-    // Fetch move from URL query parameter
+    // Fetch result from URL query parameters
     const params = new URLSearchParams(window.location.search);
     const playerMove = params.get('move');
+    const result = params.get('result');
+    const computerMove = params.get('computerMove');
 
-    // Possible moves
-    const moves = ['rock', 'paper', 'scissors'];
-    const computerMove = moves[Math.floor(Math.random() * 3)];
-
-    let result = '';
     let streak = parseInt(localStorage.getItem('streak')) || 0;
 
-    // Determine result
-    if (playerMove === computerMove) {
-      result = 'draw';
-      document.getElementById('result-image').src = "https://res.cloudinary.com/dxwhuaqga/image/upload/v1723914524/draw-image_bec0ck.jpg";
-    } else if (
-      (playerMove === 'rock' && computerMove === 'scissors') ||
-      (playerMove === 'paper' && computerMove === 'rock') ||
-      (playerMove === 'scissors' && computerMove === 'paper')
-    ) {
-      result = 'win';
-      streak++;
-      localStorage.setItem('streak', streak);
+    if (result === 'win') {
       document.getElementById('result-image').src = "https://res.cloudinary.com/dxwhuaqga/image/upload/v1723914523/Win-image_vaogdr.jpg";
-    } else {
-      result = 'lose';
-      streak = 0;
-      localStorage.setItem('streak', streak);
+      streak++;
+    } else if (result === 'lose') {
       document.getElementById('result-image').src = "https://res.cloudinary.com/dxwhuaqga/image/upload/v1723914522/lose-image_wqmvry.jpg";
+      streak = 0;
+    } else {
+      document.getElementById('result-image').src = "https://res.cloudinary.com/dxwhuaqga/image/upload/v1723914524/draw-image_bec0ck.jpg";
     }
 
     // Display streak
     document.getElementById('streak').textContent = streak;
+    localStorage.setItem('streak', streak);
 
     // Display leaderboard (simple local leaderboard)
     const leaderboard = JSON.parse(localStorage.getItem('leaderboard')) || [];
