@@ -36,7 +36,7 @@
     // Determine result
     if (playerMove === computerMove) {
       result = 'draw';
-      document.getElementById('result-image').src = "https://res.cloudinary.com/youraccount/image/upload/draw.png";
+      document.getElementById('result-image').src = "https://res.cloudinary.com/dxwhuaqga/image/upload/v1723914524/draw-image_bec0ck.jpg";
     } else if (
       (playerMove === 'rock' && computerMove === 'scissors') ||
       (playerMove === 'paper' && computerMove === 'rock') ||
@@ -45,12 +45,12 @@
       result = 'win';
       streak++;
       localStorage.setItem('streak', streak);
-      document.getElementById('result-image').src = "https://res.cloudinary.com/youraccount/image/upload/win.png";
+      document.getElementById('result-image').src = "https://res.cloudinary.com/dxwhuaqga/image/upload/v1723914523/Win-image_vaogdr.jpg";
     } else {
       result = 'lose';
       streak = 0;
       localStorage.setItem('streak', streak);
-      document.getElementById('result-image').src = "https://res.cloudinary.com/youraccount/image/upload/lose.png";
+      document.getElementById('result-image').src = "https://res.cloudinary.com/dxwhuaqga/image/upload/v1723914522/lose-image_wqmvry.jpg";
     }
 
     // Display streak
