@@ -1,9 +1,13 @@
 {
-  "routes": [
+  "headers": [
     {
-      "src": "/api/game",
-      "methods": ["POST"],
-      "dest": "/api/game.js"
+      "source": "/(.*)",
+      "headers": [
+        {
+          "key": "Access-Control-Allow-Origin",
+          "value": "*"
+        }
+      ]
     }
   ]
 }
