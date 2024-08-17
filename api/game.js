@@ -2,10 +2,11 @@ export default function handler(req, res) {
   if (req.method === 'POST') {
     const { move } = req.body;
 
-    // Define the possible moves
+    // Define possible moves for the computer
     const moves = ['rock', 'paper', 'scissors'];
     const computerMove = moves[Math.floor(Math.random() * moves.length)];
 
+    // Calculate the result
     let result = '';
     if (move === computerMove) {
       result = 'draw';
