@@ -2,11 +2,10 @@ export default function handler(req, res) {
   if (req.method === 'POST') {
     const { move } = req.body;
 
-    // Define possible moves for the computer
+    // Define the possible moves
     const moves = ['rock', 'paper', 'scissors'];
     const computerMove = moves[Math.floor(Math.random() * moves.length)];
 
-    // Calculate the result of the game
     let result = '';
     if (move === computerMove) {
       result = 'draw';
@@ -20,7 +19,7 @@ export default function handler(req, res) {
       result = 'lose';
     }
 
-    // Return the result as JSON
+    // Return the result and the move in JSON format
     res.status(200).json({ result, move, computerMove });
   } else {
     res.setHeader('Allow', ['POST']);
